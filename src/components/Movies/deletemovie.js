@@ -7,7 +7,7 @@ class DeleteMovie extends Component {
     render() {
         return (
             <div>
-                <Link to="/directors"><p>Go Back</p></Link>
+                <Link to="/movies"><p>Go Back</p></Link>
                 <h3>delete movie page</h3>
             </div>
         );

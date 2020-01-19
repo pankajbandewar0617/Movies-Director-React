@@ -1,32 +1,47 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class DirectorAdd extends Component {
+class AddDirector extends Component {
     state = {
-        director_name: ''
+        name: ''
     };
+
     takeInput = event => {
         console.log(event.target.value)
         this.setState({
-            director_name: event.target.value
+            name: event.target.value
         });
     };
 
     passValue = event => {
         event.preventDefault();
         console.log(this.state)
-        if (this.state.director_name.length > 0) {
+        if (this.state.name.length > 0) {
             console.log('add')
             console.log(this.state)
-            console.log(this)
-            // this.props.onAdd('director')
-            // this.props.addNewData(this.state);
-            // this.setState({
-            //     director_name: ''
-            // });
+            this.add(this.state)
         }
         return;
     };
+
+    add = data => {
+        console.log('add');
+        console.log(data)
+        const addUrl = 'http://localhost:9000/directors';
+        fetch(addUrl, {
+            method: 'POST',
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then(res => res.json())
+            .catch(err => {
+                console.log(err);
+            });
+        // this.componentDidMount();
+    };
+
 
     render() {
         return (
@@ -70,4 +85,4 @@ class DirectorAdd extends Component {
 // );
 // }
 
-export default DirectorAdd;
+export default AddDirector;

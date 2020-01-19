@@ -62,7 +62,7 @@ class Directorname extends Component {
                     {/* </Link> */}
 
                     <Link to={`/directors/${this.props.name.id}/delete`}>
-                        {/* <p>delete</p> */}
+                        <p>delete</p>
                         <button style={this.deletestyle()} onClick={this.deleteDirector}>delete</button>
                     </Link>
                 </div>

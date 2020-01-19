@@ -129,8 +129,8 @@ class Director extends Component {
                     </Link>
                     <h2>All Directors</h2>
 
-                    <Link to="/movies/new">
-                        <button id="addButton" style={this.addstyle()} onClick={this.add}>add movies</button>
+                    <Link to="/directors/new">
+                        <button id="addButton" style={this.addstyle()} onClick={this.add}>add directors</button>
                     </Link>
                 </div>
                 {/* <DirectorAdd name={this.state.names} /> */}
