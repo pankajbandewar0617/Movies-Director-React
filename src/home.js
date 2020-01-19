@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 class Home extends Component {
 
     navStyle = {
-        color: 'red'
+        color: 'blue',
+        display: 'flex',
     };
 
     render() {
@@ -12,11 +13,11 @@ class Home extends Component {
             <div>
                 <h1>Home Page</h1>
                 <ul className="nav-links">
-                    <Link style={this.navStyle} to="/directors">
-                        <li>Directors</li>
-                    </Link>
                     <Link style={this.navStyle} to="/movies">
-                        <li>Movies</li>
+                        <div>Movies</div>
+                    </Link>
+                    <Link style={this.navStyle} to="/directors">
+                        <div>Directors</div>
                     </Link>
                 </ul>
             </div>
