@@ -18,8 +18,28 @@ class Movies extends Component {
         fetch('http://localhost:9000/movies', {
             method: 'GET'
         })
-            .then(movies => movies.json())
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+            })
             .then(moviedata => this.setState({ movies: moviedata }))
+    }
+
+    deleteMovie = (id) => {
+        const url = `http://localhost:9000/movies/${id}`;
+        return fetch(url, {
+            method: "DELETE",
+        })
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+            })
+            .then(() => this.getAllMovies())
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     addstyle = () => {
@@ -46,7 +66,8 @@ class Movies extends Component {
                     {this.state.movies.map((data) =>
                         <Moviename
                             data={data}
-                            key={data.id} />
+                            key={data.id}
+                            deleteMovie={this.deleteMovie} />
                     )}
                 </div>
             </div>

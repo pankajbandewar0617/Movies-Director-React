@@ -70,11 +70,11 @@ class DirectorDetail extends Component {
                         {this.state.director.name}
                     </p>
                     <div>
-                        <Link to={`/movies/${this.state.director.id}/edit`}>
+                        <Link to={`/directors/${this.state.director.id}/edit`}>
                             <button style={this.editstyle()}>edit</button>
                         </Link>
 
-                        <Link to={`/movies/${this.state.director.id}/delete`}>
+                        <Link to={`/directors/${this.state.director.id}/delete`}>
                             <button style={this.deletestyle()}>delete</button>
                         </Link>
                     </div>

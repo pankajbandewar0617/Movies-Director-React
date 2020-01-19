@@ -12,103 +12,106 @@ class Director extends Component {
     };
 
     componentDidMount() {
+        this.setState({
+            name: '',
+            directors: []
+        })
         this.getAllDirector();
     }
 
     getAllDirector() {
         fetch('http://localhost:9000/directors', {
             method: 'GET'
+        }).then(res => {
+            if (res.ok) {
+                return res.json();
+            }
         })
-            .then(data => data.json())
             .then(directorData => this.setState({ directors: directorData }));
     }
 
-    add = async data => {
-        console.log('add');
-        const addUrl = 'http://localhost:9000/directors';
-        await fetch(addUrl, {
-            method: 'POST',
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        }).then(res => res.json())
-            .catch(err => {
-                console.log(err);
-            });
-        this.componentDidMount();
-    };
-
-
-    edit = async (e, data) => {
-        console.log('edit');
-        const id = e.target.parentElement.parentElement.getAttribute('position');
-        console.log(id);
-        const editUrl = `http://localhost:9000/directors/${id}`
-        await fetch(editUrl, {
-            method: 'PUT',
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        }).then(res => res.json())
-            .then(data => {
-                console.log(data);
+    deleteDirector = (id) => {
+        const url = `http://localhost:9000/directors/${id}`;
+        return fetch(url, {
+            method: "DELETE",
+        }).then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+            .then(() => this.getAllDirector())
+            .catch(error => {
+                console.log(error);
             })
-            .catch(error => {
-                console.log(error);
-            });
+    }
+
+    // add = async data => {
+    //     console.log('add');
+    //     const addUrl = 'http://localhost:9000/directors';
+    //     await fetch(addUrl, {
+    //         method: 'POST',
+    //         headers: {
+    //             Accept: "application/json",
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify(data)
+    //     }).then(res => res.json())
+    //         .catch(err => {
+    //             console.log(err);
+    //         });
+    //     this.componentDidMount();
+    // };
 
 
-    };
-
-    delete = async e => {
-        const id = e.target.parentElement.parentElement.getAttribute('position');
-
-        console.log(id);
-        const deleteUrl = `http://localhost:9000/directors/${id}`;
-        await fetch(deleteUrl, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .catch(error => {
-                console.log(error);
-            });
-        this.componentDidMount();
-    };
-
-    addstyle = () => {
-        return {
-            backgroundColor: 'green'
-        };
-    };
-
-    // add code
-
-    addNewData = async data => {
-        await fetch("http://localhost:8080/api/directors", {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .catch(err => {
-                console.log(err);
-            });
-        this.componentDidMount();
-    };
-
-    //////////////////////////////////////
+    // editDirector = (id, data) => {
+    //     console.log('edit');
+    //     const id = e.target.parentElement.parentElement.getAttribute('position');
+    //     console.log(id);
+    //     const editUrl = `http://localhost:9000/directors/${id}`
+    //     await fetch(editUrl, {
+    //         method: 'PUT',
+    //         headers: {
+    //             Accept: "application/json",
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify(data)
+    //     }).then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         });
 
 
+    // };
 
 
+    // addstyle = () => {
+    //     return {
+    //         backgroundColor: 'green'
+    //     };
+    // };
 
+    // // add code
+
+    // addNewData = async data => {
+    //     await fetch("http://localhost:8080/api/directors", {
+    //         method: "POST",
+    //         headers: {
+    //             Accept: "application/json",
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify(data)
+    //     })
+    //         .then(res => res.json())
+    //         .catch(err => {
+    //             console.log(err);
+    //         });
+    //     this.componentDidMount();
+    // };
+
+    // //////////////////////////////////////
 
     addstyle = () => {
         return {
@@ -116,10 +119,6 @@ class Director extends Component {
             borderRadius: "25px",
         }
     }
-
-
-
-
 
     render() {
         return (
@@ -150,8 +149,8 @@ class Director extends Component {
                         <Directorname
                             name={name}
                             key={name.id}
-                            onedit={this.edit}
-                            ondelete={this.delete}
+                            onedit={this.editDirector}
+                            ondelete={this.deleteDirector}
                         />
                     ))}
                 </div>

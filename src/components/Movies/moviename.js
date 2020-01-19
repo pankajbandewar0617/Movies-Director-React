@@ -18,7 +18,7 @@ class Moviename extends Component {
         }
     }
 
-    editstyle = () => {
+    editButton = () => {
         return {
             backgroundColor: "yellow",
             borderRadius: "25px",
@@ -26,7 +26,7 @@ class Moviename extends Component {
         }
     }
 
-    deletestyle = () => {
+    deleteButton = () => {
         return {
             backgroundColor: "red",
             float: "right",
@@ -34,6 +34,13 @@ class Moviename extends Component {
 
         }
     }
+
+    deleteMovies = e => {
+        e.preventDefault();
+        const id = e.target.parentNode.parentNode.parentNode.getAttribute('position');
+        console.log(id);
+        // this.props.deleteMovie(id);
+    };
 
     render() {
         return (
@@ -57,11 +64,11 @@ class Moviename extends Component {
                 <p><b>Year : </b>{this.props.data.year}</p>
                 <div>
                     <Link to={`/movies/${this.props.data.id}/edit`}>
-                        <button style={this.editstyle()}>edit</button>
+                        <button style={this.editButton()}>edit</button>
                     </Link>
 
                     <Link to={`/movies/${this.props.data.id}/delete`}>
-                        <button style={this.deletestyle()}>delete</button>
+                        <button onClick={this.deleteMovies} style={this.deleteButton()}>delete</button>
                     </Link>
                 </div>
             </div>
