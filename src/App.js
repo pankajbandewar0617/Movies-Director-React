@@ -11,7 +11,7 @@ import Movies from './components/Movies/getmovies';
 import Moviedetail from './components/Movies/moviedetail';
 import DeleteMovie from './components/Movies/deletemovie';
 import AddMovie from './components/Movies/addmovie';
-
+import EditMovie from './components/Movies/editmovie'
 
 class App extends React.Component {
 
@@ -31,7 +31,7 @@ class App extends React.Component {
               <Route path="/movies" exact component={Movies} />
               <Route path="/movies/new" component={AddMovie} />
               <Route path="/movies/:id" exact component={Moviedetail} />
-              <Route path="/movies/:id/edit" exact component={Moviedetail} />
+              <Route path="/movies/:id/edit" exact component={EditMovie} />
               <Route path="/movies/:id/delete" component={DeleteMovie} />
             </Switch>
           </div>
