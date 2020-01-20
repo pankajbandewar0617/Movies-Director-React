@@ -7,10 +7,10 @@ import DirectorDetail from './components/Directors/directordetail';
 import DirectorEdit from './components/Directors/editdirector';
 import AddDirector from './components/Directors/adddirector';
 import DirectorDelete from './components/Directors/deletedirector';
-import Movies from './components/Movies/getmovies';
-import Moviedetail from './components/Movies/moviedetail';
-import DeleteMovie from './components/Movies/deletemovie';
-import AddMovie from './components/Movies/addmovie';
+// import Movies from './components/Movies/getmovies';
+// import Moviedetail from './components/Movies/moviedetail';
+// import DeleteMovie from './components/Movies/deletemovie';
+// import AddMovie from './components/Movies/addmovie';
 
 
 class App extends React.Component {
@@ -28,10 +28,11 @@ class App extends React.Component {
               <Route path="/directors/:id" exact component={DirectorDetail} />
               <Route path="/directors/:id/edit" exact component={DirectorEdit} />
               <Route path="/directors/:id/delete" exact component={DirectorDelete} />
-              <Route path="/movies" exact component={Movies} />
+              {/* <Route path="/movies" exact component={Movies} /> */}
+              {/* <Route path="/movies/new" component={AddMovie} /> */}
               {/* <Route path="/movies/:id" exact component={Moviedetail} /> */}
-              <Route path="/movies/:id/delete" component={DeleteMovie} />
-              <Route path="/movies/new" component={AddMovie} />
+              {/* <Route path="/movies/:id/edit" exact component={Moviedetail} /> */}
+              {/* <Route path="/movies/:id/delete" component={DeleteMovie} /> */}
             </Switch>
           </div>
         </Router>

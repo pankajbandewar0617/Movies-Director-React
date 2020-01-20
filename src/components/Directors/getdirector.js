@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import Directorname from './directorname';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import DirectorAdd from './adddirector';
-import { Link, Switch, Route } from 'react-router-dom'
+// import { Link, Switch, Route } from 'react-router-dom'
 
 
-class Director extends Component {
+class Directors extends Component {
     state = {
-        name: '',
+        // name: '',
         directors: []
     };
 
     componentDidMount() {
         this.setState({
-            name: '',
+            // name: '',
             directors: []
         })
         this.getAllDirector();
@@ -26,23 +26,24 @@ class Director extends Component {
             if (res.ok) {
                 return res.json();
             }
-        })
-            .then(directorData => this.setState({ directors: directorData }));
+        }).then(directorData => this.setState({ directors: directorData }));
     }
 
-    deleteDirector = (id) => {
-        const url = `http://localhost:9000/directors/${id}`;
-        return fetch(url, {
-            method: "DELETE",
-        }).then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-        }).then(() => this.getAllDirector())
-            .catch(error => {
-                console.log(error);
-            })
-    }
+    // deleteDirector = async (id) => {
+    //     const url = `http://localhost:9000/directors/${id}`;
+    //     try {
+    //         const res = await fetch(url, {
+    //             method: "DELETE",
+    //         });
+    //         if (res.ok) {
+    //             return res.json();
+    //         }
+    //         return this.getAllDirector();
+    //     }
+    //     catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
     addstyle = () => {
         return {
@@ -58,6 +59,7 @@ class Director extends Component {
                     <Link to="/">
                         <p>Go Back</p>
                     </Link>
+
                     <h2>All Directors</h2>
 
                     <Link to="/directors/new">
@@ -70,15 +72,14 @@ class Director extends Component {
                         <Directorname
                             name={name}
                             key={name.id}
-                            onedit={this.editDirector}
-                            ondelete={this.deleteDirector}
+                        // onedit={this.editDirector}
+                        // ondelete={this.deleteDirector}
                         />
                     ))}
                 </div>
 
             </div>
         );
-
     }
 }
-export default Director;
+export default Directors;

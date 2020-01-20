@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import '../../App.css'
 
 class AddDirector extends Component {
     state = {
@@ -14,14 +15,34 @@ class AddDirector extends Component {
 
     passValue = event => {
         event.preventDefault();
-        if (this.state.name.length > 0) {
-            this.add(this.state)
+        event.target.parentNode.children[1].value = ''
+        if (this.state.name) {
+            this.directorAdd(this.state)
+            this.setState({
+                name: ''
+            })
         }
     };
 
-    add = data => {
-        const addUrl = 'http://localhost:9000/directors';
-        fetch(addUrl, {
+    // deleteDirector = async (id) => {
+    //     const url = `http://localhost:9000/directors/${id}`;
+    //     try {
+    //         const res = await fetch(url, {
+    //             method: "DELETE",
+    //         });
+    //         if (res.ok) {
+    //             return res.json();
+    //         }
+    //         return this.getAllDirector();
+    //     }
+    //     catch (error) {
+    //         console.log(error);
+    //     }
+    // }
+
+    directorAdd = data => {
+        const url = 'http://localhost:9000/directors';
+        fetch(url, {
             method: 'POST',
             headers: {
                 Accept: "application/json",
@@ -37,30 +58,23 @@ class AddDirector extends Component {
 
 
     render() {
-        return (
-            <div className="popup-add-container">
-                <div className="popup">
-                    <Link to="/directors">
-                        <button className="close-button">X</button>
-                    </Link>
-                    <h3>Add New Director</h3>
-                    <div className="add-form">
-                        <div>Director Name</div>
-                        <form onSubmit={this.passValue}>
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="Enter Director Name..."
-                                onChange={this.takeInput}
-                                required
-                            />
-                        </form>
-                    </div>
-                    <button type="submit" onClick={this.passValue}>
-                        Submit
-          </button>
-                </div>
+        return (<div>
+            <Link to="/directors">
+                <button className="close-button">Go Back</button>
+            </Link>
+            <div className="director-add">
+                <h3>Add New Director</h3>
+                <form onSubmit={this.passValue}>
+                    <div><b>Director : </b><input
+                        type="text"
+                        name="name"
+                        placeholder="Enter Director Name..."
+                        onChange={this.takeInput}
+                    />
+                        <button onClick={this.passValue}>add</button></div>
+                </form>
             </div>
+        </div >
         );
     }
 }

@@ -17,31 +17,31 @@ class Directorname extends Component {
         }
     }
 
-    editstyle = () => {
-        return {
-            backgroundColor: "yellow",
-            borderRadius: "25px",
-        }
-    }
+    // editstyle = () => {
+    //     return {
+    //         backgroundColor: "yellow",
+    //         borderRadius: "25px",
+    //     }
+    // }
 
-    deletestyle = () => {
-        return {
-            backgroundColor: "red",
-            borderRadius: "25px",
-            float: "right"
-        }
-    }
+    // deletestyle = () => {
+    //     return {
+    //         backgroundColor: "red",
+    //         borderRadius: "25px",
+    //         float: "right"
+    //     }
+    // }
 
-    deleteDirector = (e) => {
-        e.preventDefault()
-        const id = e.target.parentElement.parentElement.parentElement.getAttribute('position')
-        // console.log(id)
-        // this.props.ondelete(id)
-    }
+    // deleteDirector = (e) => {
+    //     e.preventDefault()
+    //     const id = e.target.parentElement.parentElement.parentElement.getAttribute('position')
+    //     // console.log(id)
+    //     // this.props.ondelete(id)
+    // }
 
-    edit = () => {
-        console.log('edit remaining')
-    }
+    // edit = () => {
+    //     console.log('edit remaining')
+    // }
 
     render() {
         return (
