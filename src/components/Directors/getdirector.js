@@ -38,80 +38,11 @@ class Director extends Component {
             if (res.ok) {
                 return res.json();
             }
-        })
-            .then(() => this.getAllDirector())
+        }).then(() => this.getAllDirector())
             .catch(error => {
                 console.log(error);
             })
     }
-
-    // add = async data => {
-    //     console.log('add');
-    //     const addUrl = 'http://localhost:9000/directors';
-    //     await fetch(addUrl, {
-    //         method: 'POST',
-    //         headers: {
-    //             Accept: "application/json",
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(data)
-    //     }).then(res => res.json())
-    //         .catch(err => {
-    //             console.log(err);
-    //         });
-    //     this.componentDidMount();
-    // };
-
-
-    // editDirector = (id, data) => {
-    //     console.log('edit');
-    //     const id = e.target.parentElement.parentElement.getAttribute('position');
-    //     console.log(id);
-    //     const editUrl = `http://localhost:9000/directors/${id}`
-    //     await fetch(editUrl, {
-    //         method: 'PUT',
-    //         headers: {
-    //             Accept: "application/json",
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(data)
-    //     }).then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //         });
-
-
-    // };
-
-
-    // addstyle = () => {
-    //     return {
-    //         backgroundColor: 'green'
-    //     };
-    // };
-
-    // // add code
-
-    // addNewData = async data => {
-    //     await fetch("http://localhost:8080/api/directors", {
-    //         method: "POST",
-    //         headers: {
-    //             Accept: "application/json",
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(data)
-    //     })
-    //         .then(res => res.json())
-    //         .catch(err => {
-    //             console.log(err);
-    //         });
-    //     this.componentDidMount();
-    // };
-
-    // //////////////////////////////////////
 
     addstyle = () => {
         return {
@@ -130,19 +61,9 @@ class Director extends Component {
                     <h2>All Directors</h2>
 
                     <Link to="/directors/new">
-                        <button id="addButton" style={this.addstyle()} onClick={this.add}>add directors</button>
+                        <button id="addButton" style={this.addstyle()}>add directors</button>
                     </Link>
                 </div>
-                {/* <DirectorAdd name={this.state.names} /> */}
-                {/* <Link to="/directors/new">
-                    <button style={this.addstyle()} onClick={this.add}>add directors</button>
-                </Link>
-                <Switch>
-                    <Route
-                        path="/directors/new"
-                        component={() => <DirectorAdd onAdd={this.addNewData} name={this.state.directors} />}
-                    />
-                </Switch> */}
 
                 <div className="all-directors">
                     {this.state.directors.map(name => (

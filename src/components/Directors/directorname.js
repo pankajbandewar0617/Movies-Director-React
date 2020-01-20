@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import DirectorAdd from './adddirector';
-// import DirectorEdit from './editdirector';
-// import DirectorDelete from './deletedirector'
 
 class Directorname extends Component {
 
@@ -38,7 +35,7 @@ class Directorname extends Component {
     deleteDirector = (e) => {
         e.preventDefault()
         const id = e.target.parentElement.parentElement.parentElement.getAttribute('position')
-        console.log(id)
+        // console.log(id)
         // this.props.ondelete(id)
     }
 
@@ -56,16 +53,15 @@ class Directorname extends Component {
                 <p><b>Id : </b>{this.props.name.id}</p>
                 <p><b>Director : </b>{this.props.name.name}</p>
 
-                <div>
-                    {/* <Link to={`/directors/${this.props.name.id}/edit`}> */}
-                    <button style={this.editstyle()} onClick={this.edit}>edit</button>
-                    {/* </Link> */}
+                {/* <div>
+                    <Link to={`/directors/${this.props.name.id}/edit`}>
+                        <button style={this.editstyle()} onClick={this.edit}>edit</button>
+                    </Link>
 
                     <Link to={`/directors/${this.props.name.id}/delete`}>
-                        <p>delete</p>
                         <button style={this.deletestyle()} onClick={this.deleteDirector}>delete</button>
                     </Link>
-                </div>
+                </div> */}
             </div >
         );
     }

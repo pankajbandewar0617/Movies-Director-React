@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './home';
 import Directors from './components/Directors/getdirector';
 import DirectorDetail from './components/Directors/directordetail';
-// import DirectorEdit from './components/Directors/editdirector';
+import DirectorEdit from './components/Directors/editdirector';
 import AddDirector from './components/Directors/adddirector';
 import DirectorDelete from './components/Directors/deletedirector';
 import Movies from './components/Movies/getmovies';
@@ -24,10 +24,10 @@ class App extends React.Component {
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/directors" exact component={Directors} />
-              {/* <Route path="/directors/:id" exact component={DirectorDetail} /> */}
-              <Route path="/directors/:id/delete" component={DirectorDelete} />
-              <Route path="/directors/new" component={AddDirector} />
-              {/* <Route path="/directors/:id/edit" component={DirectorEdit} /> */}
+              <Route path="/directors/new" exact component={AddDirector} />
+              <Route path="/directors/:id" exact component={DirectorDetail} />
+              <Route path="/directors/:id/edit" exact component={DirectorEdit} />
+              <Route path="/directors/:id/delete" exact component={DirectorDelete} />
               <Route path="/movies" exact component={Movies} />
               {/* <Route path="/movies/:id" exact component={Moviedetail} /> */}
               <Route path="/movies/:id/delete" component={DeleteMovie} />

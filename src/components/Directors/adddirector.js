@@ -7,7 +7,6 @@ class AddDirector extends Component {
     };
 
     takeInput = event => {
-        console.log(event.target.value)
         this.setState({
             name: event.target.value
         });
@@ -15,18 +14,12 @@ class AddDirector extends Component {
 
     passValue = event => {
         event.preventDefault();
-        console.log(this.state)
         if (this.state.name.length > 0) {
-            console.log('add')
-            console.log(this.state)
             this.add(this.state)
         }
-        return;
     };
 
     add = data => {
-        console.log('add');
-        console.log(data)
         const addUrl = 'http://localhost:9000/directors';
         fetch(addUrl, {
             method: 'POST',
@@ -71,18 +64,5 @@ class AddDirector extends Component {
         );
     }
 }
-// render() {
-// return (
-// <h2>fine</h2>
-
-// <div>
-//     <Link to="/directors"><p>Go Back</p></Link>
-//     <h1>Add Director Page</h1>
-//     <form>
-//         Name: <input placeholder="Director's Name" />
-//     </form>
-// </div>
-// );
-// }
 
 export default AddDirector;

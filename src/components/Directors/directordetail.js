@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Switch, Route } from 'react-router-dom';
 import '../../App.css'
+import DirectorEdit from './editdirector';
 
 
 class DirectorDetail extends Component {
@@ -10,10 +11,10 @@ class DirectorDetail extends Component {
     };
 
     componentDidMount() {
-        this.getAllDirector();
+        this.getDirector();
     }
 
-    getAllDirector() {
+    getDirector() {
         const getDirectorById = `http://localhost:9000${this.props.match.url}`;
         fetch(getDirectorById, {
             method: 'GET'
@@ -22,17 +23,22 @@ class DirectorDetail extends Component {
             .then(name => this.setState({ director: name }));
     }
 
+    deleteDirector() {
+        console.log('delete')
+    }
+
+    editDirector() {
+        console.log('edit')
+    }
     directorstyle = () => {
         return {
             border: '4px solid pink',
             width: '500px',
             margin: '5px',
             padding: '10px',
-            // fontSize: "14px",
             backgroundColor: 'grey',
             color: 'white',
             borderRadius: '25px'
-            // lineHeight: "16px",
         };
     };
 
@@ -59,7 +65,6 @@ class DirectorDetail extends Component {
                         <p>Go Back</p>
                     </Link>
                 </div>
-                {/* {console.log(this.state.director)} */}
                 <div style={this.directorstyle()}>
                     <p>
                         <b>Id : </b>
@@ -73,7 +78,9 @@ class DirectorDetail extends Component {
                         <Link to={`/directors/${this.state.director.id}/edit`}>
                             <button style={this.editstyle()}>edit</button>
                         </Link>
-
+                        <Switch>
+                            <Route path="/directors/:id/edit" exact component={() => (<DirectorEdit DirId={this.state.director.id} />)} />
+                        </Switch>
                         <Link to={`/directors/${this.state.director.id}/delete`}>
                             <button style={this.deletestyle()}>delete</button>
                         </Link>
