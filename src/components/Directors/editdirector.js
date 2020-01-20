@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import '../../App.css'
 
 class DirectorEdit extends Component {
 
@@ -15,29 +16,16 @@ class DirectorEdit extends Component {
 
     passValue = event => {
         event.preventDefault();
-        console.log(this.state)
-        console.log(4637487)
-        if (this.state.director.length > 0) {
-            console.log(this.state)
-            this.edit(this.state)
-            console.log(this.edit)
-            console.log(this)
-        }
-    };
-    // submit = (e) => {
-    //     e.preventDefault()
-    //     // console.log(4334)
-    //     const name = e.target.firstChild.value  //e.target.children[0].value
-    //     // const id = e.target.parentNode.parentNode.parentNode
-    //     // console.log(id)
-    //     // console.log(name)
-    //     // console.log(this.props.match.url)
-    //     this.edit(name);
-    // }
-    // this.edit(this.state)
-    // const data = state
+        event.target.parentNode.children[1].value = ''
+        if (this.state.director) {
+            this.directorEdit(this.state)
+            this.setState({
+                director: ''
+            })
+        };
+    }
 
-    edit = data => {
+    directorEdit = data => {
         const url = `http://localhost:9000${this.props.match.url}`;
         fetch(url, {
             method: 'PUT',
@@ -50,27 +38,31 @@ class DirectorEdit extends Component {
             .catch(err => {
                 console.log(err);
             });
-        // this.componentDidMount();
     };
 
     render() {
 
         return (
             <div>
-                <Link to="/directors"><p>Go Back</p></Link>
-                <h3>edit director page</h3>
-                <div>Director Name</div>
-                <form onSubmit={this.passValue}>
-                    <input
-                        onChange={this.takeInput}
-                        type="text"
-                        name="name"
-                        placeholder="Enter Director Name..."
-                        required
-                    />
-                </form>
-                <button type="submit" onClick={this.passValue}>Submit</button>
-            </div>
+                <Link to="/directors/">
+                    <button className="close-button">Go Back</button>
+                </Link>
+                <div className="director-add">
+                    <h3>Change Director Name</h3>
+                    <form onSubmit={this.passValue}>
+                        <div>
+                            <b>Director : </b>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Enter Director Name..."
+                                onChange={this.takeInput}
+                                required
+                            />
+                            <button onClick={this.passValue}>add</button></div>
+                    </form>
+                </div>
+            </div >
         );
     }
 }

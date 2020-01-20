@@ -17,51 +17,13 @@ class Directorname extends Component {
         }
     }
 
-    // editstyle = () => {
-    //     return {
-    //         backgroundColor: "yellow",
-    //         borderRadius: "25px",
-    //     }
-    // }
-
-    // deletestyle = () => {
-    //     return {
-    //         backgroundColor: "red",
-    //         borderRadius: "25px",
-    //         float: "right"
-    //     }
-    // }
-
-    // deleteDirector = (e) => {
-    //     e.preventDefault()
-    //     const id = e.target.parentElement.parentElement.parentElement.getAttribute('position')
-    //     // console.log(id)
-    //     // this.props.ondelete(id)
-    // }
-
-    // edit = () => {
-    //     console.log('edit remaining')
-    // }
-
     render() {
         return (
             <div className="directorname" position={this.props.name.id} style={this.directorstyle()}>
                 <Link to={`/directors/${this.props.name.id}`}>
-                    <button>detail</button>
+                    <p><b>Id : </b>{this.props.name.id}</p>
                 </Link>
-
-                <p><b>Id : </b>{this.props.name.id}</p>
                 <p><b>Director : </b>{this.props.name.name}</p>
-
-                {/* <div>
-                    <Link to={`/directors/${this.props.name.id}/edit`}>
-                        <button style={this.editstyle()} onClick={this.edit}>edit</button>
-                    </Link>
-
-                    <Link to={`/directors/${this.props.name.id}/delete`}>
-                        <button style={this.deletestyle()} onClick={this.deleteDirector}>delete</button>
-                    </Link>
-                </div> */}
             </div >
         );
     }

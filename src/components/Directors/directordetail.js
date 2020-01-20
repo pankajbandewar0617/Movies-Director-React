@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../../App.css'
-import DirectorEdit from './editdirector';
-
 
 class DirectorDetail extends Component {
 
@@ -23,13 +21,6 @@ class DirectorDetail extends Component {
             .then(name => this.setState({ director: name }));
     }
 
-    deleteDirector() {
-        console.log('delete')
-    }
-
-    editDirector() {
-        console.log('edit')
-    }
     directorstyle = () => {
         return {
             border: '4px solid pink',
@@ -78,9 +69,7 @@ class DirectorDetail extends Component {
                         <Link to={`/directors/${this.state.director.id}/edit`}>
                             <button style={this.editstyle()}>edit</button>
                         </Link>
-                        <Switch>
-                            <Route path="/directors/:id/edit" exact component={() => (<DirectorEdit DirId={this.state.director.id} />)} />
-                        </Switch>
+
                         <Link to={`/directors/${this.state.director.id}/delete`}>
                             <button style={this.deletestyle()}>delete</button>
                         </Link>
