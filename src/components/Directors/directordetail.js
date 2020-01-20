@@ -53,7 +53,7 @@ class DirectorDetail extends Component {
             <div>
                 <div>
                     <Link to="/directors">
-                        <p>Go Back</p>
+                        <button className="close-button">&#x21D0;</button>
                     </Link>
                 </div>
                 <div style={this.directorstyle()}>

@@ -20,6 +20,9 @@ class DirectorDelete extends Component {
     render() {
         return (
             <div>
+                <Link to="/directors">
+                    <button className="close-button">&#x21D0;</button>
+                </Link>
                 <h1>Are You Sure to Delete this Data</h1>
                 {console.log(this.props.match.url)}
                 <button onClick={this.deleteDirector}>Yes</button>

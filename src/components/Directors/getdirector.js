@@ -36,7 +36,7 @@ class Directors extends Component {
             <div>
                 <div className="navbar">
                     <Link to="/">
-                        <p>Go Back</p>
+                        <button className="close-button">&#x21D0;</button>
                     </Link>
 
                     <h2>All Directors</h2>

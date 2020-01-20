@@ -10,10 +10,10 @@ class MovieDetail extends Component {
     }
 
     componentDidMount() {
-        this.getAllMovies()
+        this.getMovie()
     }
 
-    getAllMovies() {
+    getMovie() {
         const getMovieById = `http://localhost:9000${this.props.match.url}`
         fetch(getMovieById, {
             method: 'GET'
@@ -28,11 +28,9 @@ class MovieDetail extends Component {
             width: "500px",
             margin: "5px",
             padding: "10px",
-            // fontSize: "14px",
             backgroundColor: "grey",
             color: "white",
             borderRadius: "25px",
-            // lineHeight: "16px",
         }
     }
 
@@ -56,10 +54,9 @@ class MovieDetail extends Component {
             <div>
                 <div>
                     <Link to="/movies">
-                        <p>Go Back</p>
+                        <button className="close-button">&#x21D0;</button>
                     </Link>
                 </div>
-                {/* {console.log(this.state.moviesdata)} */}
                 <div style={this.moviestyle()}>
                     <p><b>Id : </b>{this.state.moviesdata.id}</p>
                     <p><b>Title : </b>{this.state.moviesdata.title}</p>
@@ -81,10 +78,8 @@ class MovieDetail extends Component {
                         <Link to={`/movies/${this.state.moviesdata.id}/delete`}>
                             <button style={this.deletestyle()}>delete</button>
                         </Link>
-
                     </div>
                 </div>
-
             </div>
         );
     }

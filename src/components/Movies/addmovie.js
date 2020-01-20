@@ -2,28 +2,25 @@ import React, { Component } from "react";
 import { Switch, Link, Route } from "react-router-dom";
 
 class AddMovie extends Component {
-    state = {
+    state = {}
 
-    }
     SubmitDetails = e => {
         e.preventDefault();
-
-        const name = e.target[0].value;
-        const des = e.target[1].value;
+        const title = e.target[0].value;
+        const description = e.target[1].value;
         const runtime = e.target[2].value;
-        const year = e.target[3].value;
-        const genre = e.target[4].value;
-        const rating = e.target[5].value;
-        const metascore = e.target[6].value;
-        const votes = e.target[7].value;
-        const gross = e.target[8].value;
-        const director = e.target[9].value;
-        const actor = e.target[10].value;
-        const rank = e.target[11].value;
+        const genre = e.target[3].value;
+        const rating = e.target[4].value;
+        const metascore = e.target[5].value;
+        const votes = e.target[6].value;
+        const gross = e.target[7].value;
+        const director = e.target[8].value;
+        const actor = e.target[9].value;
+        const year = e.target[10].value;
 
         const data = {
-            title: name,
-            description: des,
+            title: title,
+            description: description,
             runtime: runtime,
             genre: genre,
             rating: rating,
@@ -32,22 +29,16 @@ class AddMovie extends Component {
             gross: gross,
             director: director,
             actor: actor,
-            year: year,
-            rank: rank
+            year: year
         };
-
-        console.log(data)
-        // console.log(this.props)
-        this.addMovies(data);
+        this.movieAdd(data);
         return;
 
     };
 
-    addMovies = data => {
-        console.log('add');
-        console.log(data)
-        const addUrl = 'http://localhost:9000/movies';
-        fetch(addUrl, {
+    movieAdd = data => {
+        const url = 'http://localhost:9000/movies';
+        fetch(url, {
             method: 'POST',
             headers: {
                 Accept: "application/json",
@@ -63,295 +54,118 @@ class AddMovie extends Component {
 
     render() {
         return (
-            <div className="popup-add-container">
-                <div className="popup">
-                    <Link to="/movies"><button className='close-button'>Go Back</button></Link>
+            <div>
+                <Link to="/movies">
+                    <button className="close-button">&#x21D0;</button>
+                </Link>
+                <div className="movie-add">
                     <h3>Add New Movie</h3>
-                    <div className="add-form">
-                        <form className="edit-form-container" onSubmit={this.SubmitDetails}>
-
-                            <div style={{ padding: "0.5%" }}>
-                                <label>Title: </label>
+                    <form onSubmit={this.SubmitDetails}>
+                        <div>
+                            <p>
+                                <b>Title : </b>
                                 <input
-                                    id="input-name"
                                     type="text"
-                                    placeholder="Movie Name"
+                                    placeholder="Enter Movie Name..."
                                     required
                                 />
-                            </div>
-
-                            <div style={{ padding: "0.5%" }}>
-                                <label>Description: </label>
+                            </p>
+                            <p>
+                                <b>Description : </b>
                                 <input
-                                    style={{ width: "200px", height: "20px" }}
-                                    id="input-des"
                                     type="text"
                                     placeholder="Movie Description"
                                     required
                                 />
-                            </div>
+                            </p>
+                            <p>
+                                <b>Runtime : </b>
+                                <input
+                                    type="number"
+                                    placeholder="In Minutes.."
+                                    required
+                                />
+                            </p>
+                            <p>
 
-                            <div className="edit-form-items">
-                                <div>
-                                    <label>Runtime: </label>
-                                    <input
-                                        id="input-runtime"
-                                        type="number"
-                                        placeholder="Minutes"
-                                        required
-                                    />
-                                </div>
+                                <b>Genre : </b>
+                                <select id="input-genre" selected="" required>
+                                    <option value="">Select a Genre</option>
+                                    <option value="Action">Action</option>
+                                    <option value="Adventure">Adventure</option>
+                                    <option value="Animation">Animation</option>
+                                    <option value="Biography">Biography</option>
+                                    <option value="Comedy">Comedy</option>
+                                    <option value="Crime">Crime</option>
+                                    <option value="Drama">Drama</option>
+                                    <option value="Horror">Horror</option>
+                                    <option value="Mystery">Mystery</option>
+                                </select>
+                            </p>
+                            <p>
+                                <b>Rating : </b>
+                                <input
+                                    type="number"
+                                    placeholder="Out of 10"
+                                    required
+                                />
+                            </p>
+                            <p>
+                                <b>Metascore : </b>
+                                <input
+                                    type="number"
+                                    placeholder="Out of 100"
+                                    required
+                                />
+                            </p>
+                            <p>
+                                <b>Votes : </b>
+                                <input
+                                    type="number"
+                                    placeholder="Total Votes.."
+                                    required
+                                />
+                            </p>
+                            <p>
+                                <b>Gross In Millions : </b>
+                                <input
+                                    type="number"
+                                    placeholder="Millions USD"
+                                    required
+                                />
+                            </p>
+                            <p>
+                                <b>Director : </b>
+                                <input
+                                    type="text"
+                                    placeholder="Enter Director Name..."
+                                    required
+                                />
+                            </p>
+                            <p>
+                                <b>Actor : </b>
+                                <input
+                                    type="text"
+                                    placeholder="Actor / Actress"
+                                    required
+                                />
+                            </p>
 
-                                <div>
-                                    <label>Genre: </label>
-                                    <select id="input-genre" selected="" required>
-                                        <option value="">Select a Genre</option>
-                                        <option value="Action">Action</option>
-                                        <option value="Adventure">Adventure</option>
-                                        <option value="Animation">Animation</option>
-                                        <option value="Biography">Biography</option>
-                                        <option value="Comedy">Comedy</option>
-                                        <option value="Crime">Crime</option>
-                                        <option value="Drama">Drama</option>
-                                        <option value="Horror">Horror</option>
-                                        <option value="Mystery">Mystery</option>
-                                        <option value="Western">Western</option>
-                                    </select>
-                                </div>
-
-
-                            </div>
-                            <div className="edit-form-items">
-                                <div>
-                                    <label>Rating: </label>
-                                    <input
-                                        id="input-rating"
-                                        type="number"
-                                        placeholder="rate"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label>Metascore: </label>
-                                    <input
-                                        id="input-metascore"
-                                        type="number"
-                                        placeholder="write here"
-                                        required
-                                    />
-                                </div>
-                            </div>
-                            <div className="edit-form-items">
-                                <div>
-                                    <label>Votes: </label>
-                                    <input
-                                        id="input-votes"
-                                        type="number"
-                                        placeholder="Total Votes"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label>Gross Earning: </label>
-                                    <input
-                                        id="input-gross"
-                                        type="number"
-                                        step="0.01"
-                                        placeholder="Million $"
-                                    />
-                                </div>
-                            </div>
-                            <div className="edit-form-items">
-                                <div>
-                                    <label>Director: </label>
-                                    <input
-                                        id="input-director"
-                                        type="text"
-                                        placeholder="Director Name"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label>Cast: </label>
-                                    <input
-                                        id="input-cast"
-                                        type="text"
-                                        placeholder="Actor/Actress"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label>Year: </label>
-                                    <input
-                                        id="input-year"
-                                        type="number"
-                                        placeholder="YYYY"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label>Rank: </label>
-                                    <input
-                                        id="input-rank"
-                                        type="number"
-                                        placeholder="Rank"
-                                        required
-                                    />
-                                </div>
-                            </div>
-                            <button className="submit-btn" type="submit" value="submit">
-                                Submit
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+                            <p>
+                                <b>Year : </b>
+                                <input
+                                    type="number"
+                                    placeholder="YYYY"
+                                    required
+                                />
+                            </p>
+                        </div>
+                        <button>add</button>
+                    </form>
+                </div >
+            </div >
         );
     }
 }
 
 export default AddMovie;
-
-// import React, { Component } from 'react';
-
-// class AddMovie extends Component {
-
-//     render() {
-//         return (
-//             //     <input />
-//             //     <input />
-//             //     <input />
-//             //     <input />
-//             //     <input />
-//             //     <input />
-//             //     <input />
-//             //     <input />
-//             //     <input />
-//             //     <input />
-//             //     <input />
-//             // </form>
-//             <form>
-
-//                 <div style={{ padding: "0.5%" }}>
-//                     <label>Title: </label>
-//                     <input
-//                         id="input-name"
-//                         type="text"
-//                         placeholder="Movie Name"
-//                         required
-//                     />
-//                 </div>
-//                 <div style={{ padding: "0.5%" }}>
-//                     <label>Description: </label>
-//                     <input
-//                         style={{ width: "200px", height: "20px" }}
-//                         id="input-des"
-//                         type="text"
-//                         placeholder="Movie Description"
-//                         required
-//                     />
-//                 </div>
-//                 <div className="edit-form-items">
-//                     <div>
-//                         <label>Runtime: </label>
-//                         <input
-//                             id="input-runtime"
-//                             type="number"
-//                             placeholder="Minutes"
-//                             required
-//                         />
-//                     </div>
-//                     <div>
-//                         <label>Genre: </label>
-//                         <select id="input-genre" selected="" required>
-//                             <option value="">Select a Genre</option>
-//                             <option value="Action">Action</option>
-//                             <option value="Adventure">Adventure</option>
-//                             <option value="Animation">Animation</option>
-//                             <option value="Biography">Biography</option>
-//                             <option value="Comedy">Comedy</option>
-//                             <option value="Crime">Crime</option>
-//                             <option value="Drama">Drama</option>
-//                             <option value="Horror">Horror</option>
-//                             <option value="Mystery">Mystery</option>
-//                             <option value="Western">Western</option>
-//                         </select>
-//                     </div>
-
-
-//                 </div>
-//                 <div className="edit-form-items">
-//                     <div>
-//                         <label>Rating: </label>
-//                         <input
-//                             id="input-rating"
-//                             type="number"
-//                             placeholder="rate"
-//                             required
-//                         />
-//                     </div>
-//                     <div>
-//                         <label>Metascore: </label>
-//                         <input
-//                             id="input-metascore"
-//                             type="number"
-//                             placeholder="write here"
-//                             required
-//                         />
-//                     </div>
-//                 </div>
-//                 <div className="edit-form-items">
-//                     <div>
-//                         <label>Votes: </label>
-//                         <input
-//                             id="input-votes"
-//                             type="number"
-//                             placeholder="Total Votes"
-//                             required
-//                         />
-//                     </div>
-//                     <div>
-//                         <label>Gross Earning: </label>
-//                         <input
-//                             id="input-gross"
-//                             type="number"
-//                             step="0.01"
-//                             placeholder="Million $"
-//                         />
-//                     </div>
-//                 </div>
-//                 <div className="edit-form-items">
-//                     <div>
-//                         <label>Director: </label>
-//                         <input
-//                             id="input-director"
-//                             type="text"
-//                             placeholder="Director Name"
-//                             required
-//                         />
-//                     </div>
-//                     <div>
-//                         <label>Cast: </label>
-//                         <input
-//                             id="input-cast"
-//                             type="text"
-//                             placeholder="Actor/Actress"
-//                             required
-//                         />
-//                     </div>
-//                     <div>
-//                         <label>Year: </label>
-//                         <input
-//                             id="input-year"
-//                             type="number"
-//                             placeholder="YYYY" required
-//                         /></div>
-//                 </div>
-//                 <button className="submit-btn" type="submit" value="submit">Submit</button>
-//             </form >
-
-//         );
-//     }
-// }
-
-// export default AddMovie;

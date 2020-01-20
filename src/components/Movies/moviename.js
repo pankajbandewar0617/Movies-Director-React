@@ -18,39 +18,14 @@ class Moviename extends Component {
         }
     }
 
-    editButton = () => {
-        return {
-            backgroundColor: "yellow",
-            borderRadius: "25px",
-
-        }
-    }
-
-    deleteButton = () => {
-        return {
-            backgroundColor: "red",
-            float: "right",
-            borderRadius: "25px",
-
-        }
-    }
-
-    deleteMovies = e => {
-        e.preventDefault();
-        const id = e.target.parentNode.parentNode.parentNode.getAttribute('position');
-        console.log(id);
-        // this.props.deleteMovie(id);
-    };
-
     render() {
         return (
             <div className="moviename" position={this.props.data.id} style={this.moviestyle()}>
 
                 <Link to={`/movies/${this.props.data.id}`}>
-                    <button>detail</button>
+                    <p><b>Id : </b>{this.props.data.id}</p>
                 </Link>
 
-                <p><b>Id : </b>{this.props.data.id}</p>
                 <p><b>Title : </b>{this.props.data.title}</p>
                 <p><b>Actor : </b>{this.props.data.actor}</p>
                 <p><b>Description : </b>{this.props.data.description}</p>
@@ -62,15 +37,6 @@ class Moviename extends Component {
                 <p><b>Votes : </b>{this.props.data.votes}</p>
                 <p><b>Director : </b>{this.props.data.director}</p>
                 <p><b>Year : </b>{this.props.data.year}</p>
-                <div>
-                    <Link to={`/movies/${this.props.data.id}/edit`}>
-                        <button style={this.editButton()}>edit</button>
-                    </Link>
-
-                    <Link to={`/movies/${this.props.data.id}/delete`}>
-                        <button onClick={this.deleteMovies} style={this.deleteButton()}>delete</button>
-                    </Link>
-                </div>
             </div>
         );
     }

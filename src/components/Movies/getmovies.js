@@ -26,21 +26,21 @@ class Movies extends Component {
             .then(moviedata => this.setState({ movies: moviedata }))
     }
 
-    deleteMovie = (id) => {
-        const url = `http://localhost:9000/movies/${id}`;
-        return fetch(url, {
-            method: "DELETE",
-        })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-            })
-            .then(() => this.getAllMovies())
-            .catch(error => {
-                console.log(error);
-            })
-    }
+    // deleteMovie = (id) => {
+    //     const url = `http://localhost:9000/movies/${id}`;
+    //     return fetch(url, {
+    //         method: "DELETE",
+    //     })
+    //         .then(res => {
+    //             if (res.ok) {
+    //                 return res.json();
+    //             }
+    //         })
+    //         .then(() => this.getAllMovies())
+    //         .catch(error => {
+    //             console.log(error);
+    //         })
+    // }
 
     addstyle = () => {
         return {
@@ -53,15 +53,18 @@ class Movies extends Component {
         return (
             <div>
                 <div className="navbar">
+
                     <Link to="/">
-                        <p>Go Back</p>
+                        <button className="close-button">&#x21D0;</button>
                     </Link>
                     <h2>All Movies</h2>
 
                     <Link to="/movies/new">
                         <button id="addButton" style={this.addstyle()} onClick={this.add}>add movies</button>
                     </Link>
+
                 </div>
+
                 <div className="all-movies">
                     {this.state.movies.map((data) =>
                         <Moviename

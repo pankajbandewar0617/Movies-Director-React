@@ -44,7 +44,7 @@ class AddDirector extends Component {
         return (
             <div>
                 <Link to="/directors">
-                    <button className="close-button">Go Back</button>
+                    <button className="close-button">&#x21D0;</button>
                 </Link>
                 <div className="director-add">
                     <h3>Add New Director</h3>
@@ -53,7 +53,6 @@ class AddDirector extends Component {
                             <b>Director : </b>
                             <input
                                 type="text"
-                                name="name"
                                 placeholder="Enter Director Name..."
                                 onChange={this.takeInput}
                                 required

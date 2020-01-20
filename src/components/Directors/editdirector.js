@@ -45,7 +45,7 @@ class DirectorEdit extends Component {
         return (
             <div>
                 <Link to="/directors/">
-                    <button className="close-button">Go Back</button>
+                    <button className="close-button">&#x21D0;</button>
                 </Link>
                 <div className="director-add">
                     <h3>Change Director Name</h3>
