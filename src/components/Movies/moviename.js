@@ -25,7 +25,6 @@ class Moviename extends Component {
                 <Link to={`/movies/${this.props.data.id}`}>
                     <p><b>Id : </b>{this.props.data.id}</p>
                 </Link>
-
                 <p><b>Title : </b>{this.props.data.title}</p>
                 <p><b>Actor : </b>{this.props.data.actor}</p>
                 <p><b>Description : </b>{this.props.data.description}</p>

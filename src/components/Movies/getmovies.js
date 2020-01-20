@@ -26,21 +26,6 @@ class Movies extends Component {
             .then(moviedata => this.setState({ movies: moviedata }))
     }
 
-    // deleteMovie = (id) => {
-    //     const url = `http://localhost:9000/movies/${id}`;
-    //     return fetch(url, {
-    //         method: "DELETE",
-    //     })
-    //         .then(res => {
-    //             if (res.ok) {
-    //                 return res.json();
-    //             }
-    //         })
-    //         .then(() => this.getAllMovies())
-    //         .catch(error => {
-    //             console.log(error);
-    //         })
-    // }
 
     addstyle = () => {
         return {

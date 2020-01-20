@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class EditMovie extends Component {
+
     state = {
         moviedata: []
     };
@@ -23,8 +24,6 @@ class EditMovie extends Component {
     SubmitDetails = e => {
         e.preventDefault();
         const id = this.props.match.params.id;
-        console.log(id)
-        console.log(e.target)
         const title = e.target[0].value;
         const description = e.target[1].value;
         const runtime = e.target[2].value;

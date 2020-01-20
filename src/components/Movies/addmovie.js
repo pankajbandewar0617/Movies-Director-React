@@ -6,7 +6,6 @@ class AddMovie extends Component {
 
     SubmitDetails = e => {
         e.preventDefault();
-        console.log(e.target)
         const title = e.target[0].value;
         const description = e.target[1].value;
         const runtime = e.target[2].value;
