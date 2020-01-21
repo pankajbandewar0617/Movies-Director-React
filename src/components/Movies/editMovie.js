@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import '../../App.css'
+
 
 class EditMovie extends Component {
 
@@ -83,11 +85,12 @@ class EditMovie extends Component {
             actor,
             year
         } = this.state.moviedata;
+        const id = this.props.match.params.id;
 
         return (
             <div>
-                <Link to="/movies">
-                    <button className="close-button">&#x21D0;</button>
+                <Link to={`/movies/${id}`}>
+                    <button className="back-button">&#x21D0;</button>
                 </Link>
                 <div className="movie-add">
                     <h3>Add Movie Details</h3>

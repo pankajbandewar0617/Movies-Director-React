@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom';
 import '../../App.css'
 
 class DeleteMovie extends Component {
+    componentDidMount() {
+        const id = this.props.match.params.id;
+        this.deleteMovie(id);
+        console.log(id)
+    }
 
-    deleteMovie = () => {
-        const url = `http://localhost:9000${this.props.match.url}`;
+    deleteMovie = (id) => {
+        const url = `http://localhost:9000/movies/${id}/delete`;
         fetch(url, {
             method: "DELETE",
         }).then(res => {
@@ -21,16 +26,11 @@ class DeleteMovie extends Component {
         return (
             <div>
                 <Link to="/movies">
-                    <button className="close-button">&#x21D0;</button>
+                    <button className="back-button">&#x21D0;</button>
                 </Link>
 
-                <h1>Are You Sure to Delete this Data</h1>
+                <p style={{ fontSize: '40px', marginTop: '50px' }}>{`Your Movie data with this id : ${this.props.match.params.id} is deleted. `}</p>
 
-                <button onClick={this.deleteMovie()}>Yes</button>
-
-                <Link to="/movies">
-                    <button>No</button>
-                </Link>
             </div>
         );
     }

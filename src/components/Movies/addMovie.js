@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import '../../App.css'
 
 class AddMovie extends Component {
     state = {}
@@ -56,7 +57,7 @@ class AddMovie extends Component {
         return (
             <div>
                 <Link to="/movies">
-                    <button className="close-button">&#x21D0;</button>
+                    <button className="back-button">&#x21D0;</button>
                 </Link>
                 <div className="movie-add">
                     <h3>Add New Movie</h3>

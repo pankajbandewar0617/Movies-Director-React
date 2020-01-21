@@ -22,30 +22,38 @@ class MovieDetail extends Component {
             .then(data => this.setState({ moviesdata: data }))
     }
 
-    moviestyle = () => {
+    movieStyle = () => {
         return {
-            border: "4px solid pink",
+            border: "4px solid",
             width: "500px",
             margin: "5px",
             padding: "10px",
-            backgroundColor: "grey",
-            color: "white",
+            backgroundColor: "rgb(58, 57, 57)",
+            color: "rgba(179, 166, 166, 0.767)",
             borderRadius: "25px",
         }
     }
 
-    editstyle = () => {
+    editStyle = () => {
         return {
-            backgroundColor: "yellow",
+            backgroundColor: "rgba(255, 255, 20, 0.7)",
             borderRadius: "25px",
+            border: 'none',
+            width: '70px',
+            height: '25px',
+            fontSize: '20px'
         }
     }
 
-    deletestyle = () => {
+    deleteStyle = () => {
         return {
-            backgroundColor: "red",
+            backgroundColor: "rgba(255, 0, 0, 0.76)",
             float: "right",
             borderRadius: "25px",
+            width: '80px',
+            height: '25px',
+            border: 'none',
+            fontSize: '20px'
         }
     }
 
@@ -54,10 +62,10 @@ class MovieDetail extends Component {
             <div>
                 <div>
                     <Link to="/movies">
-                        <button className="close-button">&#x21D0;</button>
+                        <button className="back-button">&#x21D0;</button>
                     </Link>
                 </div>
-                <div style={this.moviestyle()}>
+                <div style={this.movieStyle()}>
                     <p><b>Id : </b>{this.state.moviesdata.id}</p>
                     <p><b>Title : </b>{this.state.moviesdata.title}</p>
                     <p><b>Actor : </b>{this.state.moviesdata.actor}</p>
@@ -72,11 +80,11 @@ class MovieDetail extends Component {
                     <p><b>Year : </b>{this.state.moviesdata.year}</p>
                     <div>
                         <Link to={`/movies/${this.state.moviesdata.id}/edit`}>
-                            <button style={this.editstyle()}>edit</button>
+                            <button style={this.editStyle()}>edit</button>
                         </Link>
 
                         <Link to={`/movies/${this.state.moviesdata.id}/delete`}>
-                            <button style={this.deletestyle()}>delete</button>
+                            <button style={this.deleteStyle()}>delete</button>
                         </Link>
                     </div>
                 </div>

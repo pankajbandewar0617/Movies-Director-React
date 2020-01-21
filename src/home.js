@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './App.css';
 
 class Home extends Component {
 
-    navStyle = {
-        color: 'blue',
-        display: 'flex',
-    };
+    // navStyle = {
+    //     color: 'blue',
+    //     display: 'flex',
+    // };
+
 
     render() {
         return (
             <div>
-                <h1>Home Page</h1>
                 <ul className="nav-links">
                     <Link style={this.navStyle} to="/movies">
-                        <div>Movies</div>
+                        <button className="movies">Movies</button>
                     </Link>
                     <Link style={this.navStyle} to="/directors">
-                        <div>Directors</div>
+                        <button className="directors">Directors</button>
                     </Link>
                 </ul>
             </div>

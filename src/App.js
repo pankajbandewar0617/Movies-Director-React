@@ -2,16 +2,16 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './home';
-import Directors from './components/Directors/getdirector';
-import DirectorDetail from './components/Directors/directordetail';
-import DirectorEdit from './components/Directors/editdirector';
-import AddDirector from './components/Directors/adddirector';
-import DirectorDelete from './components/Directors/deletedirector';
-import Movies from './components/Movies/getmovies';
-import Moviedetail from './components/Movies/moviedetail';
-import DeleteMovie from './components/Movies/deletemovie';
-import AddMovie from './components/Movies/addmovie';
-import EditMovie from './components/Movies/editmovie'
+import Directors from './components/Directors/getAllDirector';
+import DirectorDetail from './components/Directors/getSingleDirector';
+import DirectorEdit from './components/Directors/editDirector';
+import AddDirector from './components/Directors/addDirector.js';
+import DirectorDelete from './components/Directors/deleteDirector';
+import Movies from './components/Movies/getAllMovie';
+import Moviedetail from './components/Movies/getSingleMovie';
+import DeleteMovie from './components/Movies/deleteMovie';
+import AddMovie from './components/Movies/addMovie';
+import EditMovie from './components/Movies/editMovie'
 
 class App extends React.Component {
 

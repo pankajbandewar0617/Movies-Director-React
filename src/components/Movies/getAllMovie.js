@@ -27,10 +27,15 @@ class Movies extends Component {
     }
 
 
-    addstyle = () => {
+    addStyle = () => {
         return {
-            backgroundColor: "green",
+            backgroundColor: "rgb(92, 182, 65)",
             borderRadius: "25px",
+            width: "130px",
+            height: "40px",
+            fontSize: "20px",
+            color: "navy",
+            border: 'none',
         }
     }
 
@@ -40,12 +45,12 @@ class Movies extends Component {
                 <div className="navbar">
 
                     <Link to="/">
-                        <button className="close-button">&#x21D0;</button>
+                        <button className="back-button">&#x21D0;</button>
                     </Link>
                     <h2>All Movies</h2>
 
                     <Link to="/movies/new">
-                        <button id="addButton" style={this.addstyle()} onClick={this.add}>add movies</button>
+                        <button id="addButton" style={this.addStyle()} onClick={this.add}>add movies</button>
                     </Link>
 
                 </div>

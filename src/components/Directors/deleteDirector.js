@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import '../../App.css'
 
 class DirectorDelete extends Component {
 
-    deleteDirector = () => {
-        const url = `http://localhost:9000${this.props.match.url}`;
+    componentDidMount() {
+        const id = this.props.match.params.id
+        this.deleteDirector(id)
+        console.log(id)
+    }
+
+    deleteDirector = (id) => {
+        const url = `http://localhost:9000/directors/${id}/delete`;
         fetch(url, {
             method: "DELETE",
         }).then(res => {
@@ -20,16 +27,10 @@ class DirectorDelete extends Component {
         return (
             <div>
                 <Link to="/directors">
-                    <button className="close-button">&#x21D0;</button>
+                    <button className="back-button">&#x21D0;</button>
                 </Link>
 
-                <h1>Are You Sure to Delete this Data</h1>
-
-                <button onClick={this.deleteDirector}>Yes</button>
-
-                <Link to="/directors">
-                    <button>No</button>
-                </Link>
+                <p style={{ fontSize: '40px', marginTop: '50px' }}>{`Your Director data with this id : ${this.props.match.params.id} is deleted. `}</p>
             </div>
         );
     }

@@ -21,30 +21,39 @@ class DirectorDetail extends Component {
             .then(name => this.setState({ director: name }));
     }
 
-    directorstyle = () => {
+    directorStyle = () => {
         return {
-            border: '4px solid pink',
+            border: '4px solid',
             width: '500px',
             margin: '5px',
             padding: '10px',
-            backgroundColor: 'grey',
-            color: 'white',
-            borderRadius: '25px'
+            backgroundColor: "rgb(58, 57, 57)",
+            color: "rgba(179, 166, 166, 0.767)",
+            borderRadius: "25px",
         };
     };
 
-    editstyle = () => {
+    editStyle = () => {
         return {
-            backgroundColor: 'yellow',
-            borderRadius: '25px',
+            backgroundColor: "rgba(255, 255, 20, 0.7)",
+            borderRadius: "25px",
+            border: 'none',
+            width: '70px',
+            height: '25px',
+            fontSize: '20px',
+
         };
     };
 
-    deletestyle = () => {
+    deleteStyle = () => {
         return {
-            backgroundColor: 'red',
-            float: 'right',
-            borderRadius: '25px'
+            backgroundColor: "rgba(255, 0, 0, 0.76)",
+            float: "right",
+            borderRadius: "25px",
+            width: '80px',
+            height: '25px',
+            border: 'none',
+            fontSize: '20px'
         };
     };
 
@@ -53,10 +62,10 @@ class DirectorDetail extends Component {
             <div>
                 <div>
                     <Link to="/directors">
-                        <button className="close-button">&#x21D0;</button>
+                        <button className="back-button">&#x21D0;</button>
                     </Link>
                 </div>
-                <div style={this.directorstyle()}>
+                <div style={this.directorStyle()}>
                     <p>
                         <b>Id : </b>
                         {this.state.director.id}
@@ -67,11 +76,11 @@ class DirectorDetail extends Component {
                     </p>
                     <div>
                         <Link to={`/directors/${this.state.director.id}/edit`}>
-                            <button style={this.editstyle()}>edit</button>
+                            <button style={this.editStyle()}>edit</button>
                         </Link>
 
                         <Link to={`/directors/${this.state.director.id}/delete`}>
-                            <button style={this.deletestyle()}>delete</button>
+                            <button style={this.deleteStyle()}>delete</button>
                         </Link>
                     </div>
                 </div>

@@ -2,33 +2,32 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../../App.css'
 
-class DirectorEdit extends Component {
-
+class AddDirector extends Component {
     state = {
-        director: ''
+        name: ''
     };
 
     takeInput = event => {
         this.setState({
-            director: event.target.value
+            name: event.target.value
         });
     };
 
     passValue = event => {
         event.preventDefault();
         event.target.parentNode.children[1].value = ''
-        if (this.state.director) {
-            this.directorEdit(this.state)
+        if (this.state.name) {
+            this.directorAdd(this.state)
             this.setState({
-                director: ''
+                name: ''
             })
-        };
-    }
+        }
+    };
 
-    directorEdit = data => {
-        const url = `http://localhost:9000${this.props.match.url}`;
+    directorAdd = data => {
+        const url = 'http://localhost:9000/directors';
         fetch(url, {
-            method: 'PUT',
+            method: 'POST',
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json"
@@ -40,21 +39,20 @@ class DirectorEdit extends Component {
             });
     };
 
-    render() {
 
+    render() {
         return (
             <div>
-                <Link to="/directors/">
-                    <button className="close-button">&#x21D0;</button>
+                <Link to="/directors">
+                    <button className="back-button">&#x21D0;</button>
                 </Link>
                 <div className="director-add">
-                    <h3>Change Director Name</h3>
+                    <h3>Add New Director</h3>
                     <form onSubmit={this.passValue}>
                         <div>
                             <b>Director : </b>
                             <input
                                 type="text"
-                                name="name"
                                 placeholder="Enter Director Name..."
                                 onChange={this.takeInput}
                                 required
@@ -67,4 +65,4 @@ class DirectorEdit extends Component {
     }
 }
 
-export default DirectorEdit;
+export default AddDirector;

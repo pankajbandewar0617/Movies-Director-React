@@ -21,13 +21,21 @@ class Directors extends Component {
             if (res.ok) {
                 return res.json();
             }
-        }).then(directorData => this.setState({ directors: directorData }));
+        }).then(directorData => {
+            // console.log(directorData)
+            this.setState({ directors: directorData })
+        });
     }
 
     addstyle = () => {
         return {
-            backgroundColor: "green",
+            backgroundColor: "rgb(92, 182, 65)",
             borderRadius: "25px",
+            width: "130px",
+            height: "40px",
+            fontSize: "20px",
+            color: "navy",
+            border: 'none',
         }
     }
 
@@ -36,7 +44,7 @@ class Directors extends Component {
             <div>
                 <div className="navbar">
                     <Link to="/">
-                        <button className="close-button">&#x21D0;</button>
+                        <button className="back-button">&#x21D0;</button>
                     </Link>
 
                     <h2>All Directors</h2>

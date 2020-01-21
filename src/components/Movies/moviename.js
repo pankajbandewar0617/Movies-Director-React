@@ -6,14 +6,14 @@ class Moviename extends Component {
 
     moviestyle = () => {
         return {
-            border: "4px solid pink",
+            border: "4px solid",
             width: "500px",
             margin: "5px",
             padding: "10px",
-            fontSize: "14px",
-            backgroundColor: "grey",
-            color: "white",
+            backgroundColor: "rgb(58, 57, 57)",
+            color: "rgba(179, 166, 166, 0.767)",
             borderRadius: "25px",
+            fontSize: "14px",
             lineHeight: "16px",
         }
     }
